@@ -45,6 +45,8 @@ export default function SignupPage() {
         }),
       });
 
+      const token = await cred.user.getIdToken();
+      document.cookie = `__session=${token}; path=/; max-age=${60 * 60}; SameSite=Lax`;
       router.push("/onboarding");
     } catch (err: unknown) {
       const message =

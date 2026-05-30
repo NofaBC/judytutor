@@ -19,7 +19,9 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      await signInWithEmailAndPassword(getAuth(), email, password);
+      const cred = await signInWithEmailAndPassword(getAuth(), email, password);
+      const token = await cred.user.getIdToken();
+      document.cookie = `__session=${token}; path=/; max-age=${60 * 60}; SameSite=Lax`;
       router.push("/dashboard");
     } catch (err: unknown) {
       const message =
