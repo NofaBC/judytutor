@@ -1,0 +1,8 @@
+Fix: set __session cookie on auth state change to unblock middleware
+
+The middleware checks for a __session cookie on protected routes but
+it was never being set, causing an infinite redirect loop after login.
+Now the AuthProvider sets the cookie with the Firebase ID token when
+the user signs in, and clears it on sign out.
+
+Co-Authored-By: Oz <oz-agent@warp.dev>
