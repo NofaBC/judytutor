@@ -49,23 +49,32 @@ export default function DashboardPage() {
         <h2 className="text-2xl font-bold text-gray-900">Welcome back, {user.displayName || "Student"}!</h2>
         <p className="mt-2 text-gray-600">Your study dashboard is being built. Check back soon.</p>
 
-        {/* Placeholder cards */}
+        {/* Dashboard cards */}
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { title: "Study Plan", desc: "View your personalized roadmap" },
-            { title: "AI Tutor", desc: "Start a tutoring session with Judy" },
-            { title: "Quizzes", desc: "Test your knowledge" },
-            { title: "Progress", desc: "Track lessons, scores, and streaks" },
-            { title: "Weak Areas", desc: "Focus on what needs work" },
-            { title: "Readiness", desc: "Are you ready for exam day?" },
+            { title: "Study Plan", desc: "View your personalized roadmap", href: "" },
+            { title: "AI Tutor", desc: "Start a tutoring session with Judy", href: "/dashboard/study" },
+            { title: "Quizzes", desc: "Test your knowledge", href: "" },
+            { title: "Progress", desc: "Track lessons, scores, and streaks", href: "" },
+            { title: "Weak Areas", desc: "Focus on what needs work", href: "" },
+            { title: "Readiness", desc: "Are you ready for exam day?", href: "" },
           ].map((card) => (
-            <div
+            <button
               key={card.title}
-              className="rounded-lg border bg-white p-6 shadow-sm"
+              onClick={() => card.href && router.push(card.href)}
+              disabled={!card.href}
+              className={`rounded-lg border bg-white p-6 shadow-sm text-left transition-colors ${
+                card.href
+                  ? "hover:border-blue-300 hover:shadow-md cursor-pointer"
+                  : "opacity-60 cursor-default"
+              }`}
             >
               <h3 className="font-semibold text-gray-900">{card.title}</h3>
               <p className="mt-1 text-sm text-gray-500">{card.desc}</p>
-            </div>
+              {!card.href && (
+                <span className="mt-2 inline-block text-xs text-gray-400">Coming soon</span>
+              )}
+            </button>
           ))}
         </div>
       </main>

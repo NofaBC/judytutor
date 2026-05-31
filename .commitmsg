@@ -1,9 +1,9 @@
-Fix: set __session cookie synchronously before navigation
+Phase 3: AI Tutoring Engine
 
-The cookie was only being set in AuthProvider's onAuthStateChanged
-callback, which fires asynchronously. The login/signup handlers called
-router.push() before the cookie existed, causing middleware to redirect
-back to /login. Now the cookie is set immediately after getIdToken()
-in both login and signup handlers, before navigating.
+- CISSP curriculum seed data (8 domains, concepts, terminology, objectives, scenario templates)
+- JudyTutor persona and system prompt builder (domain-aware, adaptive by skill level, session continuity, CISSP-specific guidance)
+- Tutoring API route (/api/tutor) with user context loading, OpenAI integration, and Firestore session persistence
+- Chat UI at /dashboard/study with domain selector sidebar, suggestion chips, session management, and auto-scroll
+- Dashboard cards now clickable, AI Tutor card wired to /dashboard/study
 
 Co-Authored-By: Oz <oz-agent@warp.dev>
