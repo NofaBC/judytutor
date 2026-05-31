@@ -1,9 +1,7 @@
-Phase 4: Quiz Engine and Weak Area Detection
+Phase 5: Readiness Engine and Progress Dashboard
 
-- Quiz generation API (/api/quiz) with Ambiguity Training Mode for CISSP (scenario, best-answer, risk-prioritization, governance, management questions)
-- Quiz submission/scoring API (/api/quiz/submit) with weak area identification
-- Weak area analysis API (/api/analyze-weakness) aggregates quiz history into per-domain progress, computes streaks, identifies weak domains below 70%
-- Quiz UI at /dashboard/quiz with setup (type, domain, count), question flow with per-question feedback (correct/incorrect highlighting, explanation, competing analysis), and results summary with score circle and weak area tags
-- Quizzes dashboard card wired to /dashboard/quiz
+- Readiness API (/api/readiness) with domain-weighted scoring using exam blueprint weights, recency bonus, confidence score (variance-based consistency), weak domain detection (below 70% or untested), verdict (Ready/Almost Ready/Needs Preparation), exam countdown, and personalized recommendations
+- Progress dashboard at /dashboard/progress with readiness score card, confidence score, study streak, exam countdown, Judy's recommendation, domain performance heatmap with color-coded progress bars, weak areas section with study links, and overall stats
+- All dashboard cards now active: Study Plan (coming soon), AI Tutor, Quizzes, Progress, Weak Areas, Readiness
 
 Co-Authored-By: Oz <oz-agent@warp.dev>
