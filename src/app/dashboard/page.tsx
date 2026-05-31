@@ -54,7 +54,7 @@ export default function DashboardPage() {
           {[
             { title: "Study Plan", desc: "View your personalized roadmap", href: "" },
             { title: "AI Tutor", desc: "Start a tutoring session with Judy", href: "/dashboard/study" },
-            { title: "Quizzes", desc: "Test your knowledge", href: "" },
+            { title: "Quizzes", desc: "Test your knowledge", href: "/dashboard/quiz" },
             { title: "Progress", desc: "Track lessons, scores, and streaks", href: "" },
             { title: "Weak Areas", desc: "Focus on what needs work", href: "" },
             { title: "Readiness", desc: "Are you ready for exam day?", href: "" },
