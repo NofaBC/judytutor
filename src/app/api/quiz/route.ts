@@ -154,14 +154,31 @@ ${domainContext}
 
 ${
   isCISSP
-    ? `=== AMBIGUITY TRAINING MODE™ ===
-This is CRITICAL for CISSP preparation:
-- Generate scenario-based questions where multiple answers seem technically correct.
-- The student must identify the BEST answer, not just a correct one.
-- Question types to include: scenario-based, best-answer, risk-prioritization, governance, management-focused.
-- Think like a CISO — questions should test judgment, not just recall.
-- For each question, explain WHY the best answer is best AND why each competing answer is less optimal.
-- Include business implications and risk implications in explanations.`
+    ? `=== AMBIGUITY TRAINING MODE™ (CRITICAL) ===
+
+You are generating questions for the CISSP exam. The CISSP does NOT test factual recall — it tests JUDGMENT, PRIORITIZATION, and MANAGERIAL THINKING.
+
+QUESTION FORMAT RULES:
+- Every question MUST be single-best-answer. NEVER use "select all that apply" or "which of the following" with multiple correct answers.
+- Every question MUST have exactly 4 options (A, B, C, D).
+- Exactly ONE option is the BEST answer. The other 3 must be PLAUSIBLE — not obviously wrong.
+- At least 2 of the 4 options should be defensible choices that a reasonable security professional might select.
+- The difference between the best answer and the runner-up should require managerial judgment to identify.
+
+SCENARIO CONSTRUCTION RULES:
+- Every question stem must describe a SPECIFIC SCENARIO with a named role (security manager, CISO, security director, incident commander) facing a DECISION.
+- Include real-world constraints: business operations impact, time pressure, regulatory deadlines, budget limits, executive expectations.
+- Ask "What should [role] do FIRST?" or "What is the BEST course of action?" or "What is the MOST important consideration?"
+- NEVER ask simple definition or recall questions like "What is...?" or "Which protocol does...?"
+
+ANSWER DESIGN RULES:
+- The correct answer typically follows this CISSP pattern: assess before acting, protect people first, follow established policy, think organizationally, manage risk over fixing technology.
+- Wrong answers should represent common mistakes: jumping to technical fixes before assessing, acting without authority, choosing tactical over strategic, prioritizing technology over people/process.
+- A technician would often pick the wrong answer. A manager would pick the right one.
+
+EXPLANATION RULES:
+- "explanation" must explain why the best answer is best in terms of ORGANIZATIONAL RISK, business impact, and governance — not just technical correctness.
+- "competingAnalysis" must address EACH wrong option individually: acknowledge its merit, then explain specifically why it is suboptimal compared to the best answer. Use the format: "Option A: [merit], but [why it falls short]. Option C: [merit], but [why it falls short]. Option D: [merit], but [why it falls short]."`
     : `Generate questions appropriate for this exam's format and difficulty level.`
 }
 
@@ -169,11 +186,11 @@ Respond with ONLY valid JSON in this exact format:
 {
   "questions": [
     {
-      "stem": "Question text here?",
-      "options": ["Option A", "Option B", "Option C", "Option D"],
+      "stem": "A security manager discovers that... [specific scenario with a decision to make]. What should the security manager do FIRST?",
+      "options": ["Plausible action A", "Plausible action B", "Plausible action C", "Plausible action D"],
       "correctIndex": 0,
-      "explanation": "Why this answer is the BEST choice...",
-      "competingAnalysis": "Why Option B is close but suboptimal because... Option C fails because... Option D is wrong because...",
+      "explanation": "This is the best answer because from an organizational risk perspective... A manager would prioritize this because...",
+      "competingAnalysis": "Option B: Has merit because [reason], but falls short because [reason]. Option C: Seems reasonable because [reason], but is suboptimal because [reason]. Option D: A technician might choose this because [reason], but a manager would not because [reason].",
       "domain": "domain_id",
       "topic": "Specific topic name",
       "questionType": "scenario"
@@ -182,11 +199,13 @@ Respond with ONLY valid JSON in this exact format:
 }
 
 Available domain IDs: ${track.domains.map((d) => `${d.id} (${d.name})`).join(", ")}
-Question types: scenario, best-answer, risk-prioritization, governance, management, factual
+Question types: scenario, best-answer, risk-prioritization, governance, management
 
 IMPORTANT:
 - All questions must be ORIGINAL — do not copy from any published question bank.
-- Every question must have exactly 4 options.
+- Every question must have exactly 4 options. Single best answer only.
 - correctIndex is 0-based (0 = first option).
-- Generate exactly ${count} questions.`;
+- Generate exactly ${count} questions.
+- Do NOT generate any factual recall questions. Every question must be scenario-based.
+- If the student would answer in under 30 seconds, the question is too easy. Make them THINK.`;
 }

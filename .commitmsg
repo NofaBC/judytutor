@@ -1,9 +1,23 @@
-Phase 6: Reminders and Study Materials
+Fix: overhaul CISSP prompts for real exam-level ambiguity
 
-- Email reminder cron API (/api/cron/reminders) with 4 reminder types: streak encouragement, weak area nudge, exam approaching, and general study nudge. Uses nodemailer, protected by CRON_SECRET, scheduled daily at 9am via Vercel Cron.
-- Study materials API (/api/materials) with GET/POST/DELETE. Stores text content in Firestore (up to 500K chars). Supports notes, PDF text, study guides, slides.
-- Study materials UI at /dashboard/materials with upload form (title, type, content textarea with char counter), materials list with delete, and empty state.
-- Vercel cron schedule added to vercel.json
-- All 6 dashboard cards now active and linked
+Based on first tester feedback: questions were too easy with obvious
+answers and "select all that apply" format.
+
+Changes to tutor-persona.ts:
+- Enforce single-best-answer format, never "select all that apply"
+- Require 2-3 plausible wrong answers (not obviously wrong)
+- Frame all scenarios around manager/CISO decision-making
+- Include real-world pressure: business ops, time, regulatory deadlines
+- Test prioritization (FIRST/BEST/MOST IMPORTANT)
+- Correct answer follows CISSP pattern: assess before act, protect people, follow policy, think organizationally
+- Explain wrong answers with merit acknowledgment, not dismissal
+
+Changes to quiz/route.ts:
+- Complete rewrite of Ambiguity Training Mode prompt
+- Explicit question format rules banning recall questions
+- Scenario construction rules requiring named roles and decisions
+- Answer design rules: technician vs manager thinking
+- Explanation rules: organizational risk framing, per-option analysis
+- Quality gate: "if answerable in under 30 seconds, too easy"
 
 Co-Authored-By: Oz <oz-agent@warp.dev>

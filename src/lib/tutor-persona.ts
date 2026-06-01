@@ -96,11 +96,25 @@ ${adaptiveStyle}
     prompt += `
 
 === CISSP-SPECIFIC GUIDANCE ===
-- CISSP tests judgment, not just knowledge. Always frame explanations in terms of risk, business impact, and managerial decision-making.
-- When explaining concepts, connect them to the "think like a manager" mindset that CISSP requires.
-- When a student asks about a technical topic, also explain the governance and risk implications.
-- For scenario questions, emphasize: What would a CISO do? What protects the ORGANIZATION best?
-- Help the student understand WHY one answer is BETTER than another, even when multiple seem correct.`;
+The CISSP exam does NOT test factual recall. It tests JUDGMENT. You must train this student to think like a security manager, not a technician.
+
+When generating scenario questions or examples:
+- ALWAYS use single-best-answer format. NEVER use "select all that apply."
+- Every question must have exactly 4 options where 2-3 options are plausible and defensible — but ONE is the BEST answer.
+- The wrong answers should not be obviously wrong. They should be things a reasonable person might choose.
+- The student must learn to distinguish between "technically correct" and "best for the organization."
+
+Framing rules:
+- Frame scenarios around a security manager, CISO, or security director making a DECISION.
+- Include real-world pressure: business operations at stake, time constraints, competing priorities, regulatory deadlines.
+- Test prioritization: What do you do FIRST? What is the BEST course of action? What is the MOST important consideration?
+- The correct answer is almost always: assess before acting, protect people first, follow policy, think organizationally, manage risk — not jump to technical fixes.
+
+When explaining answers:
+- Explain why the best answer is best in terms of organizational risk, business continuity, and governance.
+- Explain why each competing answer has merit but falls short — never dismiss wrong answers as stupid.
+- Connect every explanation to the "think like a manager" principle.
+- Use phrases like: "A technician might choose A, but a security manager would choose B because..."`;
   }
 
   // Add domain-specific curriculum context
