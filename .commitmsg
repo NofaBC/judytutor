@@ -1,7 +1,9 @@
-Phase 5: Readiness Engine and Progress Dashboard
+Phase 6: Reminders and Study Materials
 
-- Readiness API (/api/readiness) with domain-weighted scoring using exam blueprint weights, recency bonus, confidence score (variance-based consistency), weak domain detection (below 70% or untested), verdict (Ready/Almost Ready/Needs Preparation), exam countdown, and personalized recommendations
-- Progress dashboard at /dashboard/progress with readiness score card, confidence score, study streak, exam countdown, Judy's recommendation, domain performance heatmap with color-coded progress bars, weak areas section with study links, and overall stats
-- All dashboard cards now active: Study Plan (coming soon), AI Tutor, Quizzes, Progress, Weak Areas, Readiness
+- Email reminder cron API (/api/cron/reminders) with 4 reminder types: streak encouragement, weak area nudge, exam approaching, and general study nudge. Uses nodemailer, protected by CRON_SECRET, scheduled daily at 9am via Vercel Cron.
+- Study materials API (/api/materials) with GET/POST/DELETE. Stores text content in Firestore (up to 500K chars). Supports notes, PDF text, study guides, slides.
+- Study materials UI at /dashboard/materials with upload form (title, type, content textarea with char counter), materials list with delete, and empty state.
+- Vercel cron schedule added to vercel.json
+- All 6 dashboard cards now active and linked
 
 Co-Authored-By: Oz <oz-agent@warp.dev>

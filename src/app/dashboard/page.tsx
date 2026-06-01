@@ -52,7 +52,7 @@ export default function DashboardPage() {
         {/* Dashboard cards */}
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { title: "Study Plan", desc: "View your personalized roadmap", href: "" },
+            { title: "Study Plan", desc: "View your personalized roadmap", href: "/dashboard/materials" },
             { title: "AI Tutor", desc: "Start a tutoring session with Judy", href: "/dashboard/study" },
             { title: "Quizzes", desc: "Test your knowledge", href: "/dashboard/quiz" },
             { title: "Progress", desc: "Track lessons, scores, and streaks", href: "/dashboard/progress" },
